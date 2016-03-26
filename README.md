@@ -8,7 +8,7 @@ What is dot-Todo
 dot-ToDo is a todo list app with login and member system. 
 You can make different lists for your todos. You and your friends can create personel todo lists. 
 
-**Demo Deployment:** [dot-todo.herokuapp.com](dot-todo.herokuapp.com)
+**Demo Deployment:** [dot-todo.herokuapp.com](http://dot-todo.herokuapp.com/)
 
 ###**Some of used things;**
 MongoDB, AngularJS, ExpressJS, Mongoose
