@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html ng-app="bogoTodo">
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <% if ( user ) { %>
+    <link href="./css/style.css" rel="stylesheet">
+    <% } else { %>
+
+    <link href="./css/signin.css" rel="stylesheet">
+    
+    <% } %>
+    <style>
+        html                    { overflow-y:scroll; }
+        body                    { padding-top:50px; }
+        #todo-list              { margin-bottom:30px; }
+    </style>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script><!-- load angular -->
+    <script src="js/services/todos.js"></script> <!-- load our todo service -->
+    <script src="js/core.js"></script> <!-- load our main application -->
+
+</head>
+
+<body ng-controller="mainController">
+
+    <% if ( user ) { %>
+
+
+
+
+    <div class="container text-center ">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                     
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                         <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button> <a class="navbar-brand" href="#"><%= title %></a>
+                </div>
+                
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li class="dropdown">
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%=username%><strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#helpModal">How To ?</a>
+                                </li>
+
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="/logout">Log Out</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+            </nav>
+            <div class="row">
+
+
+
+
+
+                <div class="col-md-4">
+                        <!-- FORM TO CREATE TODOS -->
+        <div id="todo-form" class="row">
+            <div class="col-sm-12  text-center">
+
+
+
+                <form name="addtodoform">
+                    <div class="form-group addtodo">
+
+                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+     
+<div class="input-group"> 
+
+                        <input type="text" class="form-control" maxlength="120" placeholder="Add a to-do..." ng-model="formData.userdata.list.text" required>
+
+                         <span class="input-group-addon " id="basic-addon2">
+                                <select  name="selecttodolist"class="form-custom-control" id="selecttodolist" ng-model="formData.userdata.list.listname" required>
+                                  <option  ng-repeat="option in todolist | filter:'<%= username %>-<%= userid %>'" value="{{option._id}}-{{option.listname}}">{{option.listname}}</option>
+                                </select></span>
+
+                        <input ng-model="formData.username='<%=userid%>'" style="display: none">
+
+                        <input ng-model="formData.userdata.list.done='false'" style="display: none">
+                        <input ng-model="formData.userdata.list.date=dateNow | date: 'yyyy-MM-dd'" style="display: none">
+<span class="input-group-btn">
+                    <button type="submit" class="btn btn-default" ng-click="addtodoform.$valid && createTodo()">Add</button>
+                    </span>
+</div>
+
+
+
+                    </div>
+
+                    <!-- createToDo() WILL CREATE NEW TODOS -->
+                </form>
+            </div>
+        </div>
+
+                </div>
+                <div class="col-md-8">
+                    <ul class="pagination pagination-lg">
+                        <li>
+                            <a href="#" class="dayname" ><i class="fa fa-chevron-left"></i></a>
+                        </li>
+                        <li ng-repeat="n in [0,1,2,3,4]">
+                            <a ng-model="getdates(n)" class="dayname" href="#">{{date | date:'EEEE'}}<p class="daydate" >{{date | date:'MMMM dd'}}</p></a>
+                        </li>
+                        <li>
+                            <a href="#" class="dayname" ><i class="fa fa-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-2">
+                     
+                    <button type="button" class="btn btn-newlist" data-toggle="modal" data-target="#addListModal">
+                        <table >
+                            <tbody>
+                              <tr>
+                                <td><i class="fa fa-plus-circle"></i></td>
+                                <td class="text">New<br/>List</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+
+
+
+
+
+                <div class="col-md-4" ng-repeat="tolist in todolist| filter:'<%= username %>-<%= userid %>'">
+                    <div class="panel panel-default">
+                        <div class="panel-heading {{ tolist.color }}">
+                            <h3 class="panel-title" ng-model="ListName">
+                                {{ tolist.listname }}
+                            <div class="btn-group-hide"><b ng-click="deleteList(tolist._id)"><i class="fa fa-times"></i></b></div></h3>
+                        </div>
+
+                <div class="panel-body">
+                    <div class="checkbox" ng-repeat="todo in todos| filter:tolist._id + '-' +tolist.listname">
+                            <table class="table"><tbody><tr>
+        <td><input type="checkbox"  id="box{{todo._id}}" ng-model="todo.userdata.list.done"><label for="box{{todo._id}}">{{ todo.userdata.list.text }}</label></td>
+        <td style="text-align:right;"><div class="btn-group"><b ng-click="deleteTodo(todo._id)"><i class="fa fa-times"></i></b></div></td>
+                        </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+  <div class="panel-footer grey" data-toggle="modal" ng-click="listData<%=userid%>={}" data-target="#addTodoToList-{{tolist._id}}"><i class="fa fa-plus"></i></div>
+
+                    </div>
+
+  <div class="modal fade" id="addTodoToList-{{tolist._id}}" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add ToDo to <b>"{{ tolist.listname }}"</b></h4>
+        </div>
+        <div class="modal-body">
+                          <form name="addtodoform">
+                    <div class="form-group addtodo">
+
+                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                             <input type="text" class="form-control" maxlength="120" placeholder="Add a to-do..." ng-model="listData<%=userid%>.userdata.list.text" required>
+                            <input ng-model="listData<%=userid%>.userdata.list.listname=tolist._id +'-'+tolist.listname" style="display: none">
+                        <input ng-model="listData<%=userid%>.username='<%=userid%>'" style="display: none">
+
+                        <input ng-model="listData<%=userid%>.userdata.list.done='false'" style="display: none">
+
+
+                    </div>
+
+                    <!-- createToDo() WILL CREATE NEW TODOS -->
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="addtodoform.$valid && createTodoToList(listData<%=userid%>)" data-dismiss="modal">Add</button>
+                </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</div>
+
+
+
+<br/>
+<!--
+        <div class="container">
+
+       
+        <div class="jumbotron text-center">
+            <h1>Todo's all users <span class="label label-info">{{ todos.length }} </span></h1>
+        </div>
+
+-->
+  <div class="modal fade" id="addListModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">New List</h4>
+        </div>
+        <div class="modal-body">
+                <form name="todolistcreate">
+                    <div class="form-group addlist">
+
+                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                        <p>List Name</p>
+                            <div class="alert alert-danger" ng-show="todolistcreate.listnamein.$error.maxlength">
+         Maximum title length is 40 characters!
+     </div>
+                        <input type="text" name="listnamein" class="form-control input-lg" placeholder="Add a list..." ng-maxlength="40" ng-model="listData.listname" required>
+                        <p>Title Color</p>
+<select class="form-control input-lg" ng-model="listData.color" required>
+<option value="blue">Blue</option>
+<option value="green">Green</option>
+<option value="yellow">Yellow</option>
+<option value="red">Red</option>
+</select>
+
+                        <input ng-model="listData.usercheck='<%= username %>-<%= userid %>'" style="display: none">
+                    </div>
+
+                    <!-- createToDo() WILL CREATE NEW TODOS -->
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="todolistcreate.$valid && createList()" >Add List</button>
+                </form>
+
+        <div id="todo-lists">
+
+                <!-- LOOP OVER THE TODOS IN $scope.todos -->
+                <div class="checkbox" ng-repeat="tolist in todolist| filter:'<%= username %>-<%= userid %>'">
+                    <label>
+                        <p > {{ tolist.listname }}</p>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<div id="helpModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">How To ?</h4>
+      </div>
+      <div class="modal-body">
+        <p>For use our application you may create todo list first.</p>
+        <p></p>
+        <p>After create list, you can add your todos to your lists.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    </div>
+<% } else { %>
+
+    <div class="container text-center">
+    <i class="fa fa-check-square-o"></i>
+    
+
+<div class="jumbotron centeron text-center">      
+
+    <div class="panel panel-default col-md-5 ">
+                <h3>Welcome to dot-ToDo app!</h3>
+                <p>Join Us and control your life!</p>
+                <p><a href="/login" class="btn btn-primary" role="button">Login</a> <a href="Register" class="btn btn-default" role="button">Register</a></p>
+          
+    </div>
+</div>
+</div>
+    <% } %>
+
+
+
+
+</body>
+</html>
