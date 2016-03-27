@@ -1,330 +1,304 @@
 /* Index & Dashboard Page Css File */
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #2D425F;
+padding-top: 40px;
+padding-bottom: 40px;
+background-color: #2D425F;
 }
 .col-md-12{
-  min-height: 480px;
+min-height: 480px;
 }
 .form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+max-width: 330px;
+padding: 15px;
+margin: 0 auto;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
-  margin-bottom: 10px;
+margin-bottom: 10px;
 }
 .form-signin .checkbox {
-  font-weight: normal;
+font-weight: normal;
 }
 .form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
+position: relative;
+height: auto;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+padding: 10px;
+font-size: 16px;
 }
 .form-signin .form-control:focus {
-  z-index: 2;
+z-index: 2;
 }
 .form-signin input[type="email"] {
-  margin-bottom: 0px;
+margin-bottom: 0px;
 }
 .input-group{
-
-  padding: 3px;
+padding: 3px;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 0px;
+margin-bottom: 0px;
 }
 .form-signin button {
-  margin-top: 5px;
+margin-top: 5px;
 }
 .input-group-addon{
-  min-width:45px;
-  text-align:center;
+min-width:45px;
+text-align:center;
 }
 .fa-check-square-o{
-  font-size: 256px;
+font-size: 256px;
 }
 .fa-plus-circle{
- font-size: 32px; 
+font-size: 32px;
 }
-
 .jumbotron.vertical-center {
-  margin-bottom: 0; /* Remove the default bottom margin of .jumbotron */
+margin-bottom: 0; /* Remove the default bottom margin of .jumbotron */
 }
 .navbar{
-  position: relative;
-  min-height: 20px;
-  margin-bottom: 10px;
-  border: 1px solid transparent;
+position: relative;
+min-height: 20px;
+margin-bottom: 10px;
+border: 1px solid transparent;
 }
 .navbar-brand {
-  float: left;
-  height: 20px;
-  padding: 15px 15px;
-  font-size: 12px;
-  line-height: 5px;
+float: left;
+height: 20px;
+padding: 15px 15px;
+font-size: 12px;
+line-height: 5px;
 }
 .navbar-default .navbar-brand {
-  color: #B4B9BE;
-  font-weight: bold;
+color: #B4B9BE;
+font-weight: bold;
 }
-
 .navbar-default .navbar-nav > li > a {
-  color: #B4B9BE;
-  font-weight: bold;
+color: #B4B9BE;
+font-weight: bold;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav >.open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  color: #555;
-  background-color: #e7e7e7;
-  border-top-right-radius:1.6em;
-  border-top-left-radius:1.6em;
-  min-width: 100px;
-  min-height: 3px;
-  }
+color: #555;
+background-color: #e7e7e7;
+border-top-right-radius:1.6em;
+border-top-left-radius:1.6em;
+min-width: 100px;
+min-height: 3px;
+}
 .dropdown-menu {
 width: 100%;
 }
 .navbar-nav > li > a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    line-height: 10px;
+padding-top: 10px;
+padding-bottom: 10px;
+line-height: 10px;
 }
 .row{
-
-  background-color: #eee;
-  border-top-right-radius:1.5em;
-  border-top-left-radius:1.5em;
-  border-bottom-right-radius:1.5em;
-  border-bottom-left-radius:1.5em;
+background-color: #eee;
+border-top-right-radius:1.5em;
+border-top-left-radius:1.5em;
+border-bottom-right-radius:1.5em;
+border-bottom-left-radius:1.5em;
 }
 .navbar-default{
-  border-top-right-radius:1.5em;
-  border-top-left-radius:1.5em;
-  border-bottom-right-radius:0px;
-  border-bottom-left-radius:0px;
-  background-color: #636F7F;
-  margin-top: -10px;
-  margin-right: -15px;
-  margin-left: -15px;
-
-
+border-top-right-radius:1.5em;
+border-top-left-radius:1.5em;
+border-bottom-right-radius:0px;
+border-bottom-left-radius:0px;
+background-color: #636F7F;
+margin-top: -10px;
+margin-right: -15px;
+margin-left: -15px;
 }
 .vertical-center {
-  min-height: 100%; 
-  min-height: 100vh;
+min-height: 100%;
+min-height: 100vh;
+/* Make it a flex container */
+display: -webkit-box;
+display: -moz-box;
+display: -ms-flexbox;
+display: -webkit-flex;
+display: flex;
 
-  /* Make it a flex container */
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex; 
-  
-  /* Align the bootstrap's container vertically */
-    -webkit-box-align : center;
-  -webkit-align-items : center;
-       -moz-box-align : center;
-       -ms-flex-align : center;
-          align-items : center;
-  
-  /* In legacy web browsers such as Firefox 9
-     we need to specify the width of the flex container */
-  width: 100%;
-  
-  /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
-     hence the bootstrap's container won't be aligned to the center anymore.
-  
-     Therefore, we should use the following declarations to get it centered again */
-         -webkit-box-pack : center;
-            -moz-box-pack : center;
-            -ms-flex-pack : center;
-  -webkit-justify-content : center;
-          justify-content : center;
+/* Align the bootstrap's container vertically */
+-webkit-box-align : center;
+-webkit-align-items : center;
+-moz-box-align : center;
+-ms-flex-align : center;
+align-items : center;
+
+/* In legacy web browsers such as Firefox 9
+we need to specify the width of the flex container */
+width: 100%;
+
+/* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+hence the bootstrap's container won't be aligned to the center anymore.
+
+Therefore, we should use the following declarations to get it centered again */
+-webkit-box-pack : center;
+-moz-box-pack : center;
+-ms-flex-pack : center;
+-webkit-justify-content : center;
+justify-content : center;
 }
 .centeron {
+/* Make it a flex container */
+display: -webkit-box;
+display: -moz-box;
+display: -ms-flexbox;
+display: -webkit-flex;
+display: flex;
 
-  /* Make it a flex container */
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex; 
-  
 
-  
-  /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
-     hence the bootstrap's container won't be aligned to the center anymore.
-  
-     Therefore, we should use the following declarations to get it centered again */
-         -webkit-box-pack : center;
-            -moz-box-pack : center;
-            -ms-flex-pack : center;
-  -webkit-justify-content : center;
-          justify-content : center;
+/* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+hence the bootstrap's container won't be aligned to the center anymore.
+
+Therefore, we should use the following declarations to get it centered again */
+-webkit-box-pack : center;
+-moz-box-pack : center;
+-ms-flex-pack : center;
+-webkit-justify-content : center;
+justify-content : center;
 }
-
 .pagination {
-    display: inline-block;
-    padding-left: 0;
-    margin: 0px 0;
-    border-radius: 4px;
-    height: 45px;
-
-
+display: inline-block;
+padding-left: 0;
+margin: 0px 0;
+border-radius: 4px;
+height: 45px;
 }
 .pagination-lg > li > a,
 .pagination-lg > li > span {
-  padding: 00px 16px;
-  font-size: 18px;
-  line-height: 1.3333333;
-  background-color: transparent;
-  border: none;
-  border-right: 1px solid #ddd;
-  border-left: 1px solid #ddd;
+padding: 00px 16px;
+font-size: 18px;
+line-height: 1.3333333;
+background-color: transparent;
+border: none;
+border-right: 1px solid #ddd;
+border-left: 1px solid #ddd;
 }
 .pagination-lg > li:first-child > a,
 .pagination-lg > li:first-child > span {
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-right: 1px solid #ddd;
-  border-left: none;
-  line-height: 45px;
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0px;
+border-right: 1px solid #ddd;
+border-left: none;
+line-height: 45px;
 }
 .pagination-lg > li:last-child > a,
 .pagination-lg > li:last-child > span {
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-right: none;
-  line-height: 45px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-right: none;
+line-height: 45px;
 }
-
-
 .form-group.addtodo > .form-control{
-
-  margin-bottom: 0px;
-
+margin-bottom: 0px;
 }
 .pagination-lg > li > a.dayname{
-  color: #B9BEC1;
-  font-weight: bold;
+color: #B9BEC1;
+font-weight: bold;
 }
 .pagination-lg > li > a.dayname > p.daydate{
-  color: #B9BEC1;
-  font-weight: normal;
-  font-size: 13px;
+color: #B9BEC1;
+font-weight: normal;
+font-size: 13px;
 }
 .panel-body{
-background-color: #F3F3F5;  
+background-color: #F3F3F5;
 }
 .panel-default > .panel-footer.grey{
-  padding: 0px;
-  font-size: 24px;
-  color: #8992A1;
-  background-color: #AAB3C2;
-  border-color: #AAB3C2;
+padding: 0px;
+font-size: 24px;
+color: #8992A1;
+background-color: #AAB3C2;
+border-color: #AAB3C2;
 }
 .panel-default > .panel-heading.blue{
-  color: #484848;
-  background-color: #81CFCF;
-  border-color: #81CFCF;
+color: #484848;
+background-color: #81CFCF;
+border-color: #81CFCF;
 }
 .panel-default > .panel-heading.yellow{
-  color: #484848;
-  background-color: #DFD67B;
-  border-color: #DFD67B;
+color: #484848;
+background-color: #DFD67B;
+border-color: #DFD67B;
 }
 .panel-default > .panel-heading.red{
-  color: #484848;
-  background-color: #E46B6F;
-  border-color: #E46B6F;
+color: #484848;
+background-color: #E46B6F;
+border-color: #E46B6F;
 }
 .panel-default > .panel-heading.green{
-  color: #484848;
-  background-color: #80D087;
-  border-color: #80D087;
+color: #484848;
+background-color: #80D087;
+border-color: #80D087;
 }
 .panel-default > .panel-heading > h3{
-  font-weight: bold;
-    word-wrap: break-word;
+font-weight: bold;
+word-wrap: break-word;
 }
 .panel-body > .checkbox{
- background-color: #fff;
-  text-align: left;
-  border: 1px solid #ddd;
-    border-radius: 4px;
+background-color: #fff;
+text-align: left;
+border: 1px solid #ddd;
+border-radius: 4px;
 }
-
 input[type=checkbox] { display:none; } /* to hide the checkbox itself */
 input[type=checkbox] + label:before {
-  font-family: FontAwesome;
-  display: inline-block;
+font-family: FontAwesome;
+display: inline-block;
 }
-
 input[type=checkbox] + label:before { content: "\f096"; } /* unchecked icon */
 input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
-
 input[type=checkbox]:checked + label:before { content: "\f046"; } /* checked icon */
 input[type=checkbox]:checked + label:before { letter-spacing: 5px; } /* allow space for check mark */
-
 table.table tr td div.btn-group { display:none;}
 table.table tr:hover td div.btn-group { display:inline-block;}
-
 table.table tr td div.btn-group { display:none;}
 table.table tr:hover td div.btn-group { display:inline-block;}
-
 div.btn-group-hide{ display:none;}
 div.panel-default div:hover h3 div.btn-group-hide { display:inline-block;}
 .input-group-addon {
-  height: 10px;
-
+height: 10px;
 }
 .checkbox label, .radio label {
-
-    word-wrap: break-word;
-    max-width: 275px;
+word-wrap: break-word;
+max-width: 275px;
 }
 .form-custom-control{
-  max-width: 90px;
+max-width: 90px;
 }
-
-
 .btn-newlist {
-  color: #333;
-  background-color: transparent;
-  border: none;
-  font-size: 8px; 
-  color: #B9BEC1;
+color: #333;
+background-color: transparent;
+border: none;
+font-size: 8px;
+color: #B9BEC1;
 }
 .btn-newlist table tbody tr td.text{
-  min-width: 30px;
-  font-weight: bold;
+min-width: 30px;
+font-weight: bold;
 }
 .btn-newlist:focus,
 .btn-newlist.focus {
-  color: #333;
-  background-color: #e6e6e6;
-  
+color: #333;
+background-color: #e6e6e6;
+
 }
 .btn-newlist:hover {
-  color: #333;
-  background-color: #e6e6e6;
-  
+color: #333;
+background-color: #e6e6e6;
+
 }
 .btn-newlist:active,
 .btn-newlist.active,
 .open > .dropdown-toggle.btn-newlist {
-  color: #333;
-  background-color: #e6e6e6;
-  
+color: #333;
+background-color: #e6e6e6;
+
 }
 .btn-newlist:active:hover,
 .btn-newlist.active:hover,
@@ -335,14 +309,14 @@ div.panel-default div:hover h3 div.btn-group-hide { display:inline-block;}
 .btn-newlist:active.focus,
 .btn-newlist.active.focus,
 .open > .dropdown-toggle.btn-newlist.focus {
-  color: #333;
-  background-color: #d4d4d4;
-  
+color: #333;
+background-color: #d4d4d4;
+
 }
 .btn-newlist:active,
 .btn-newlist.active,
 .open > .dropdown-toggle.btn-newlist {
-  background-image: none;
+background-image: none;
 }
 .btn-newlist.disabled:hover,
 .btn-newlist[disabled]:hover,
@@ -353,10 +327,10 @@ fieldset[disabled] .btn-newlist:focus,
 .btn-newlist.disabled.focus,
 .btn-newlist[disabled].focus,
 fieldset[disabled] .btn-newlist.focus {
-  background-color: #fff;
-  
+background-color: #fff;
+
 }
 .btn-newlist .badge {
-  color: #fff;
-  
+color: #fff;
+
 }

@@ -24,11 +24,11 @@ module.exports = function(app) {
 
         // create a todolist, information comes from AJAX request from Angular
         Todolist.create({
-            text : req.body.text,
-            listname :req.body.listname,
-            userdata :req.body.userdata,
-            color :req.body.color,
-            usercheck :req.body.usercheck,
+            text: req.body.text,
+            listname: req.body.listname,
+            userdata: req.body.userdata,
+            color: req.body.color,
+            usercheck: req.body.usercheck,
         }, function(err, todo) {
             if (err)
                 res.send(err);
@@ -47,7 +47,7 @@ module.exports = function(app) {
     // delete a todolist
     app.delete('/api/todos/list/:todo_id', function(req, res) {
         Todolist.remove({
-            _id : req.params.todo_id
+            _id: req.params.todo_id
         }, function(err, todo) {
             if (err)
                 res.send(err);

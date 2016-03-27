@@ -1,75 +1,72 @@
 var mongoose = require('mongoose'),
-	crypto = require('crypto'),
-	Schema = mongoose.Schema;
+    crypto = require('crypto'),
+    Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-	name: String,
-	email: String,
-	username: {
-		type: String,
-		trim: true,
-		unique: true
-	},
-	password: String,
-	provider: String,
-	providerId: String,
-	providerData: {}
+    name: String,
+    email: String,
+    username: {
+        type: String,
+        trim: true,
+        unique: true
+    },
+    password: String,
+    provider: String,
+    providerId: String,
+    providerData: {}
 });
 var TodoListSchema = new Schema({
     listname: String,
-    usercheck : String,
-    text : String,
-    color : String
+    usercheck: String,
+    text: String,
+    color: String
 });
 var TodoSchema = new Schema({
-    username : String,
+    username: String,
     userdata: {
-    	list:{
-    listname: String,
-    text : String,
-    done : Boolean,
-    date : String
-    	}
+        list: {
+            listname: String,
+            text: String,
+            done: Boolean,
+            date: String
+        }
     }
 });
-UserSchema.pre('save', 
-	function(next) {
-		if (this.password) {
-			var md5 = crypto.createHash('md5');
-			this.password = md5.update(this.password).digest('hex');
-		}
+UserSchema.pre('save',
+    function(next) {
+        if (this.password) {
+            var md5 = crypto.createHash('md5');
+            this.password = md5.update(this.password).digest('hex');
+        }
 
-		next();
-	}
+        next();
+    }
 );
 
 UserSchema.methods.authenticate = function(password) {
-	var md5 = crypto.createHash('md5');
-	md5 = md5.update(password).digest('hex');
+    var md5 = crypto.createHash('md5');
+    md5 = md5.update(password).digest('hex');
 
-	return this.password === md5;
+    return this.password === md5;
 };
 
 UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
-	var _this = this;
-	var possibleUsername = username + (suffix || '');
+    var _this = this;
+    var possibleUsername = username + (suffix || '');
 
-	_this.findOne(
-		{username: possibleUsername},
-		function(err, user) {
-			if (!err) {
-				if (!user) {
-					callback(possibleUsername);
-				}
-				else {
-					return _this.findUniqueUsername(username, (suffix || 0) + 1, callback);
-				}
-			}
-			else {
-				callback(null);
-			}
-		}
-	);
+    _this.findOne({ username: possibleUsername },
+        function(err, user) {
+            if (!err) {
+                if (!user) {
+                    callback(possibleUsername);
+                } else {
+                    return _this.findUniqueUsername(username, (suffix || 0) + 1, callback);
+                }
+            } else {
+                callback(null);
+            }
+        }
+    );
 };
 
 mongoose.model('User', UserSchema);

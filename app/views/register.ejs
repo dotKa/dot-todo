@@ -1,55 +1,56 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>
-		<%=title %>
-	</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link href="css/signin.css" rel="stylesheet">
+    <title>
+        <%=title %>
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="css/signin.css" rel="stylesheet">
 </head>
+
 <body>
-
-
-	<div class="container vertical-center">
-		<div class="panel panel-default col-md-3 ">
-
-		<form class="form-signin" action="/register" method="post">
-        	<h2 class="form-signin-heading text-center">Register</h2>
-        	<% for(var i in messages) { %>
-	<div class="alert alert-danger"><%= messages[i] %></div>
-	<% } %>
-			<div class="input-group">
-			<span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
-	        	<label for="username" class="sr-only">Username</label>
-	        	<input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
-	        </div>
-	        <div class="input-group">
-			<span class="input-group-addon" id="basic-addon1"><i class="fa fa-info"></i></span>
-	        	<label for="name" class="sr-only">Name</label>
-	        	<input type="text" id="name" name="name" class="form-control" placeholder="Name" required autofocus>
-	        </div>
-	        <div class="input-group">
-			<span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
-	        	<label for="email" class="sr-only">E-mail</label>
-	        	<input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
-	        </div>
-			<div class="input-group">
-			<span class="input-group-addon" id="basic-addon1"><i class="fa fa-certificate"></i></span>
-	        	<label for="password" class="sr-only">Password</label>
-	        	<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-	        </div>    
-
-	        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-      	</form>
-
-      	<div class="row">
-		    <div class="center-block text-center">
-				<a href="/oauth/facebook">Login with Facebook</a> |
-				<a href="/oauth/twitter">Login with Twitter</a>
-			</div>
-		</div>
-		</div>
+    <div class="container vertical-center">
+        <div class="panel panel-default col-md-3 ">
+            <form class="form-signin" action="/register" method="post">
+                <h2 class="form-signin-heading text-center">Register</h2>
+                <% for(var i in messages) { %>
+                    <div class="alert alert-danger">
+                        <%= messages[i] %>
+                    </div>
+                    <% } %>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                            <label for="username" class="sr-only">Username</label>
+                            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-info"></i></span>
+                            <label for="name" class="sr-only">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Name" required autofocus>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                            <label for="email" class="sr-only">E-mail</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-certificate"></i></span>
+                            <label for="password" class="sr-only">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+            </form>
+            <div class="row">
+                <div class="center-block text-center">
+                    <a href="/oauth/facebook">Login with Facebook</a> |
+                    <a href="/oauth/twitter">Login with Twitter</a><br/>
+                    <a href="/login">Already Member?</a>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>

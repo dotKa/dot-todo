@@ -1,36 +1,35 @@
 {
-  "name": "todoapp",
-  "version": "0.0.1",
-  "description": "ToDo app with login and personal list system",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "todo",
-    "mvc",
-    "login"
-  ],
-  "author": "dotka",
-  "license": "ISC",
-
-  "homepage": "https://github.com/dotKa/dot-todo.git",
-  "dependencies": {
-    "body-parser": "~1.14.1",
-    "connect-flash": "^0.1.1",
-    "ejs": "^2.0.6",
-    "express"    : "~4.13.2",
-    "express-session": "^1.10.1",
-    "mongoose": "4.4.8",
-    "morgan"     : "~1.6.1",
-    "passport": "^0.2.1",
-    "passport-facebook": "^1.0.3",
-    "passport-local": "^1.0.0",
-    "passport-twitter": "^1.0.2",
-    "method-override": "~2.3.5"
-  },
-  "repository": {
-  "type": "git",
-  "url": "https://github.com/dotKa/dot-todo.git"
+"name": "todoapp",
+"version": "0.0.1",
+"description": "ToDo app with login and personal list system",
+"main": "server.js",
+"scripts": {
+"test": "echo \"Error: no test specified\" && exit 1"
+},
+"keywords": [
+"todo",
+"mvc",
+"login"
+],
+"author": "dotka",
+"license": "ISC",
+"homepage": "https://github.com/dotKa/dot-todo.git",
+"dependencies": {
+"body-parser": "~1.14.1",
+"connect-flash": "^0.1.1",
+"ejs": "^2.0.6",
+"express"    : "~4.13.2",
+"express-session": "^1.10.1",
+"mongoose": "4.4.8",
+"morgan"     : "~1.6.1",
+"passport": "^0.2.1",
+"passport-facebook": "^1.0.3",
+"passport-local": "^1.0.0",
+"passport-twitter": "^1.0.2",
+"method-override": "~2.3.5"
+},
+"repository": {
+"type": "git",
+"url": "https://github.com/dotKa/dot-todo.git"
 }
 }
